@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <section class="main">
+        <div class="row">
+            {% if(entity is defined) %}
+                <div class="col-xs-12">
+                    {% if entity.previous %}
+                        <a href="{{ path('app_linked_list_edit_string', {id: entity.previous.id}) }}">
+                            previous: {{ entity.previous.name }}
+                        </a>
+                    {% endif %}
+                    {% if(entity.next) %}
+                        <a href="{{ path('app_linked_list_edit_string', {id: entity.next.id}) }}">
+                            next: {{ entity.next.name }}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
